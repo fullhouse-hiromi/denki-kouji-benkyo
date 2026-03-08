@@ -375,6 +375,379 @@ export const hardcodedQuestions: Question[] = [
   },
 
   // ============================
+  // 第二種 - 電気理論 追加 (12問)
+  // ============================
+  {
+    id: "hc-062", type: "choice", grade: 2, category: "theory",
+    question: "断面積2mm²、長さ100mの銅線の抵抗は約何Ωか。ただし銅の抵抗率を1.7×10⁻²Ω·mmとする。",
+    choices: ["0.17Ω", "0.85Ω", "1.7Ω", "8.5Ω"],
+    answer: 1, explanation: "R=ρL/A=1.7×10⁻²×100/2=0.85Ω", source: "hardcoded",
+  },
+  {
+    id: "hc-063", type: "choice", grade: 2, category: "theory",
+    question: "20Ωと30Ωの抵抗を並列に接続した場合の合成抵抗は何Ωか。",
+    choices: ["10Ω", "12Ω", "25Ω", "50Ω"],
+    answer: 1, explanation: "R=(20×30)/(20+30)=600/50=12Ω", source: "hardcoded",
+  },
+  {
+    id: "hc-064", type: "choice", grade: 2, category: "theory",
+    question: "100Vの回路にコイル（誘導性リアクタンス10Ω）のみを接続したとき、流れる電流は何Aか。",
+    choices: ["5A", "10A", "15A", "20A"],
+    answer: 1, explanation: "I=V/XL=100/10=10A。純粋な誘導回路では電流は電圧より90°遅れる。", source: "hardcoded",
+  },
+  {
+    id: "hc-065", type: "truefalse", grade: 2, category: "theory",
+    question: "交流回路において、抵抗だけの回路の力率は1（100%）である。",
+    answer: true, explanation: "抵抗のみの回路では電圧と電流の位相差がなく、cosθ=cos0°=1（力率100%）。", source: "hardcoded",
+  },
+  {
+    id: "hc-066", type: "choice", grade: 2, category: "theory",
+    question: "電線の許容電流を超える電流を流し続けると、最も起こりやすい現象はどれか。",
+    choices: ["電圧降下が小さくなる", "電線が冷える", "電線の絶縁物が劣化・発火する", "電流が自然に減少する"],
+    answer: 2, explanation: "許容電流を超えると電線が過熱し、絶縁被覆が劣化・溶融して発火の危険がある。", source: "hardcoded",
+  },
+  {
+    id: "hc-067", type: "choice", grade: 2, category: "theory",
+    question: "静電容量10μFのコンデンサに100Vを充電したとき、蓄えられる電荷は何Cか。",
+    choices: ["0.001C", "0.01C", "0.1C", "1C"],
+    answer: 0, explanation: "Q=CV=10×10⁻⁶×100=0.001C=1mC", source: "hardcoded",
+  },
+  {
+    id: "hc-068", type: "choice", grade: 2, category: "theory",
+    question: "単相100V、消費電力1kWの電熱器に流れる電流は何Aか。",
+    choices: ["5A", "10A", "15A", "20A"],
+    answer: 1, explanation: "I=P/V=1000/100=10A。電熱器は抵抗負荷で力率1。", source: "hardcoded",
+  },
+  {
+    id: "hc-069", type: "choice", grade: 2, category: "theory",
+    question: "100Vの回路で2Aの電流が1時間流れたときの電力量は何Whか。",
+    choices: ["50Wh", "100Wh", "200Wh", "400Wh"],
+    answer: 2, explanation: "W=P×t=V×I×t=100×2×1=200Wh", source: "hardcoded",
+  },
+  {
+    id: "hc-070", type: "truefalse", grade: 2, category: "theory",
+    question: "直流回路ではコンデンサに定常的な電流が流れる。",
+
+    answer: false, explanation: "コンデンサは直流を通さない。充電完了後は電流が流れなくなる（定常状態で電流ゼロ）。", source: "hardcoded",
+  },
+  {
+    id: "hc-071", type: "choice", grade: 2, category: "theory",
+    question: "抵抗8Ωと誘導リアクタンス6Ωが直列に接続された回路のインピーダンスは何Ωか。",
+    choices: ["2Ω", "10Ω", "14Ω", "48Ω"],
+    answer: 1, explanation: "Z=√(R²+XL²)=√(64+36)=√100=10Ω", source: "hardcoded",
+  },
+  {
+    id: "hc-072", type: "choice", grade: 2, category: "theory",
+    question: "銅と比べたアルミニウムの導電率は約何%か。",
+    choices: ["約40%", "約60%", "約80%", "約100%"],
+    answer: 1, explanation: "アルミニウムの導電率は銅の約60%。ただし軽量のため送電線等に使用される。", source: "hardcoded",
+  },
+  {
+    id: "hc-073", type: "choice", grade: 2, category: "theory",
+    question: "単相2線式の電圧降下の計算式はどれか。ただしρは抵抗率、Lは片道の長さ、Iは電流、Aは断面積とする。",
+    choices: ["e=ρLI/A", "e=2ρLI/A", "e=√3ρLI/A", "e=ρL²I/A"],
+    answer: 1, explanation: "単相2線式の電圧降下e=2ρLI/A（往復分で2倍）。", source: "hardcoded",
+  },
+
+  // ============================
+  // 第二種 - 配線設計・図記号 追加 (12問)
+  // ============================
+  {
+    id: "hc-074", type: "choice", grade: 2, category: "wiring",
+    question: "図記号「⊕」は何を表すか。",
+    choices: ["照明器具", "コンセント", "スイッチ", "ジョイントボックス"],
+    answer: 1, explanation: "⊕はコンセントを表す図記号。○は照明器具。", source: "hardcoded",
+  },
+  {
+    id: "hc-075", type: "choice", grade: 2, category: "wiring",
+    question: "接地極付きコンセントの図記号として正しいものはどれか。",
+    choices: ["⊕", "⊕にEの添字", "○にEの添字", "□にEの添字"],
+    answer: 1, explanation: "接地極付きコンセントは⊕にEの添字で表す。", source: "hardcoded",
+  },
+  {
+    id: "hc-076", type: "truefalse", grade: 2, category: "wiring",
+    question: "30A分岐回路では、直径2.6mm以上の電線を使用しなければならない。",
+
+    answer: true, explanation: "30A分岐回路では直径2.6mm以上（断面積5.5mm²以上）の電線を使用する。", source: "hardcoded",
+  },
+  {
+    id: "hc-077", type: "choice", grade: 2, category: "wiring",
+    question: "VVFケーブル1.6mm 2芯の許容電流は約何Aか。",
+    choices: ["13A", "19A", "24A", "33A"],
+    answer: 1, explanation: "VVF1.6mm-2芯の許容電流は約19A。", source: "hardcoded",
+  },
+  {
+    id: "hc-078", type: "choice", grade: 2, category: "wiring",
+    question: "20A分岐回路で使用するコンセントは、定格何A以上何A以下か。",
+    choices: ["15A以上20A以下", "20A", "10A以上20A以下", "15A"],
+    answer: 0, explanation: "20A分岐回路のコンセントは定格15A以上20A以下のものを使用する。", source: "hardcoded",
+  },
+  {
+    id: "hc-079", type: "choice", grade: 2, category: "wiring",
+    question: "VVFケーブル2.0mm 3芯の許容電流は約何Aか。",
+    choices: ["15A", "19A", "21A", "24A"],
+    answer: 2, explanation: "VVF2.0mm-3芯の許容電流は約21A。芯数が増えると許容電流は下がる。", source: "hardcoded",
+  },
+  {
+    id: "hc-080", type: "truefalse", grade: 2, category: "wiring",
+    question: "引掛シーリングは天井に直付けする照明器具取付用の器具である。",
+
+    answer: true, explanation: "引掛シーリング（ローゼット）は天井に取り付け、照明器具を引掛けて接続する器具。", source: "hardcoded",
+  },
+  {
+    id: "hc-081", type: "choice", grade: 2, category: "wiring",
+    question: "電線管内の電線本数が5〜6本の場合の電流減少係数はいくつか。",
+    choices: ["0.49", "0.56", "0.63", "0.70"],
+    answer: 1, explanation: "電線管内5〜6本の場合、電流減少係数は0.56。", source: "hardcoded",
+  },
+  {
+    id: "hc-082", type: "choice", grade: 2, category: "wiring",
+    question: "配線用遮断器の定格電流が30Aの分岐回路に接続できるコンセントの最大定格は何Aか。",
+    choices: ["15A", "20A", "30A", "40A"],
+    answer: 2, explanation: "30A分岐回路では20A以上30A以下のコンセントを使用する。", source: "hardcoded",
+  },
+  {
+    id: "hc-083", type: "choice", grade: 2, category: "wiring",
+    question: "100V15A分岐回路で、コンセントの総数に制限はあるか。",
+    choices: ["3個まで", "5個まで", "10個まで", "制限なし"],
+    answer: 3, explanation: "15A・20A分岐回路ではコンセントの個数に制限はない。ただし負荷容量の合計に注意が必要。", source: "hardcoded",
+  },
+  {
+    id: "hc-084", type: "choice", grade: 2, category: "wiring",
+    question: "防雨形コンセントの図記号で使用される添字はどれか。",
+    choices: ["E", "LK", "WP", "T"],
+    answer: 2, explanation: "WP（Weatherproof）は防雨形を表す添字。Eは接地極付き、LKは施錠形。", source: "hardcoded",
+  },
+  {
+    id: "hc-085", type: "truefalse", grade: 2, category: "wiring",
+    question: "単相3線式200Vの回路には、2極1素子の配線用遮断器を使用できる。",
+
+    answer: false, explanation: "単相3線式200V回路には2極2素子の配線用遮断器を使用する。2極1素子は100V回路用。", source: "hardcoded",
+  },
+
+  // ============================
+  // 第二種 - 施工方法・工具 追加 (12問)
+  // ============================
+  {
+    id: "hc-086", type: "choice", grade: 2, category: "construction",
+    question: "リングスリーブの圧着マークが「○」となるのは、どの組み合わせか。",
+    choices: ["1.6mm×2本", "1.6mm×3本", "1.6mm×4本", "2.0mm×2本"],
+    answer: 0, explanation: "1.6mm×2本の場合は小スリーブで圧着マーク「○」。1.6mm×3〜4本は「小」。", source: "hardcoded",
+  },
+  {
+    id: "hc-087", type: "choice", grade: 2, category: "construction",
+    question: "差込形コネクタで接続する場合、電線の被覆を剥く長さはどれか。",
+    choices: ["約10mm", "約12mm", "ストリップゲージに合わせる", "約20mm"],
+    answer: 2, explanation: "差込形コネクタはストリップゲージに合わせて被覆を剥く（通常約12mm）。", source: "hardcoded",
+  },
+  {
+    id: "hc-088", type: "truefalse", grade: 2, category: "construction",
+    question: "合成樹脂管（VE管）工事は、屋内の隠ぺい場所および露出場所に施設できる。",
+
+    answer: true, explanation: "VE管（硬質ビニル電線管）は自己消火性があり、隠ぺい・露出配管ともに使用可能。", source: "hardcoded",
+  },
+  {
+    id: "hc-089", type: "choice", grade: 2, category: "construction",
+    question: "アウトレットボックスの使用目的として正しいものはどれか。",
+    choices: ["電線の分岐・接続", "電線の延長のみ", "配管の曲げ加工", "ケーブルの端末処理"],
+    answer: 0, explanation: "アウトレットボックスは電線の引き入れ、分岐、接続および器具の取り付けに使用する。", source: "hardcoded",
+  },
+  {
+    id: "hc-090", type: "choice", grade: 2, category: "construction",
+    question: "金属管とボックスの接続に使用する部品はどれか。",
+    choices: ["カップリング", "コネクタ（ボックスコネクタ）", "サドル", "ステップル"],
+    answer: 1, explanation: "ボックスコネクタは金属管とアウトレットボックスを接続するための金具。", source: "hardcoded",
+  },
+  {
+    id: "hc-091", type: "choice", grade: 2, category: "construction",
+    question: "ケーブル工事でVVFケーブルを曲げる場合、曲げ半径は外径の何倍以上か。",
+    choices: ["3倍", "6倍", "8倍", "10倍"],
+    answer: 1, explanation: "VVFケーブルの曲げ半径は外径の6倍以上とする。", source: "hardcoded",
+  },
+  {
+    id: "hc-092", type: "truefalse", grade: 2, category: "construction",
+    question: "電線と電線の接続部分は、電線の引張強さの20%以上に低下してはならない。",
+
+    answer: false, explanation: "接続部分の電線の引張強さは、接続前の80%以上（つまり20%以上の低下は不可）が要求される。正しくは「20%以上低下させてはならない」。", source: "hardcoded",
+  },
+  {
+    id: "hc-093", type: "choice", grade: 2, category: "construction",
+    question: "金属管工事でボンド線を取り付ける目的はどれか。",
+    choices: ["管の固定", "管の電気的接続（接地の確保）", "管の防水", "管の保温"],
+    answer: 1, explanation: "ボンド線は金属管相互の電気的接続を確保し、接地の連続性を保つために取り付ける。", source: "hardcoded",
+  },
+  {
+    id: "hc-094", type: "choice", grade: 2, category: "construction",
+    question: "ホルソーの用途はどれか。",
+    choices: ["電線管の切断", "ボックスの穴あけ", "電線の被覆剥ぎ", "ねじの切断"],
+    answer: 1, explanation: "ホルソーは金属板やボックスに大きな穴をあけるための工具。", source: "hardcoded",
+  },
+  {
+    id: "hc-095", type: "choice", grade: 2, category: "construction",
+    question: "リングスリーブの大スリーブを使用するのはどの組み合わせか。",
+    choices: ["1.6mm×2本", "1.6mm×4本", "2.0mm×2本", "2.0mm×3本と1.6mm×1本"],
+    answer: 3, explanation: "大スリーブは電線の断面積の合計が8mm²を超える場合に使用。2.0mm×3本+1.6mm×1本=11.42mm²。", source: "hardcoded",
+  },
+  {
+    id: "hc-096", type: "choice", grade: 2, category: "construction",
+    question: "埋込連用取付枠に取り付けられる器具の最大個数は何個か。",
+    choices: ["2個", "3個", "4個", "5個"],
+    answer: 1, explanation: "埋込連用取付枠には最大3個まで器具を取り付けられる。", source: "hardcoded",
+  },
+  {
+    id: "hc-097", type: "truefalse", grade: 2, category: "construction",
+    question: "天井内のジョイントボックスでの電線接続は、リングスリーブまたは差込形コネクタで行う。",
+
+    answer: true, explanation: "ジョイントボックス内では、リングスリーブによる圧着接続または差込形コネクタによる接続が認められている。", source: "hardcoded",
+  },
+
+  // ============================
+  // 第二種 - 法規 追加 (12問)
+  // ============================
+  {
+    id: "hc-098", type: "choice", grade: 2, category: "regulation",
+    question: "電気工事士免状を取得せずに電気工事を行った場合の罰則はどれか。",
+    choices: ["10万円以下の罰金", "30万円以下の罰金又は3月以下の懲役", "50万円以下の罰金", "100万円以下の罰金"],
+    answer: 1, explanation: "無資格で電気工事を行った場合、3月以下の懲役又は30万円以下の罰金。", source: "hardcoded",
+  },
+  {
+    id: "hc-099", type: "truefalse", grade: 2, category: "regulation",
+    question: "電気工事士は、工事完了後に配線図を保存する義務がある。",
+
+    answer: false, explanation: "電気工事士法では配線図の保存義務は定められていない。電気設備技術基準に適合した施工の義務がある。", source: "hardcoded",
+  },
+  {
+    id: "hc-100", type: "choice", grade: 2, category: "regulation",
+    question: "使用電圧が300V以下の金属製外箱に施すべき接地工事の種類はどれか。",
+    choices: ["A種", "B種", "C種", "D種"],
+    answer: 3, explanation: "300V以下の機器の金属製外箱にはD種接地工事（100Ω以下）を施す。", source: "hardcoded",
+  },
+  {
+    id: "hc-200", type: "choice", grade: 2, category: "regulation",
+    question: "接地抵抗を測定する計器はどれか。",
+    choices: ["クランプメーター", "絶縁抵抗計", "接地抵抗計", "回路計"],
+    answer: 2, explanation: "接地抵抗の測定には接地抵抗計（アーステスター）を使用する。", source: "hardcoded",
+  },
+  {
+    id: "hc-201", type: "choice", grade: 2, category: "regulation",
+    question: "電気用品安全法の「PSE」マークのうち、特定電気用品のマーク形状はどれか。",
+    choices: ["丸形", "菱形", "三角形", "四角形"],
+    answer: 1, explanation: "特定電気用品は菱形のPSEマーク。特定電気用品以外は丸形のPSEマーク。", source: "hardcoded",
+  },
+  {
+    id: "hc-202", type: "truefalse", grade: 2, category: "regulation",
+    question: "電気工事士免状の交付は都道府県知事が行う。",
+
+    answer: true, explanation: "電気工事士免状は都道府県知事が交付する。", source: "hardcoded",
+  },
+  {
+    id: "hc-203", type: "choice", grade: 2, category: "regulation",
+    question: "低圧屋内配線の絶縁抵抗測定に使用する測定器の定格測定電圧は何Vか（対地電圧150V以下の場合）。",
+    choices: ["25V", "50V", "125V", "250V"],
+    answer: 2, explanation: "対地電圧150V以下の場合、125Vの絶縁抵抗計を使用する。", source: "hardcoded",
+  },
+  {
+    id: "hc-204", type: "choice", grade: 2, category: "regulation",
+    question: "D種接地工事で、漏電遮断器（動作時間0.5秒以内）を設置した場合の接地抵抗値は何Ω以下に緩和されるか。",
+    choices: ["100Ω", "200Ω", "300Ω", "500Ω"],
+    answer: 3, explanation: "D種接地工事は原則100Ω以下だが、0.5秒以内に動作する漏電遮断器設置時は500Ω以下に緩和される。", source: "hardcoded",
+  },
+  {
+    id: "hc-205", type: "choice", grade: 2, category: "regulation",
+    question: "配線用遮断器の極数と素子数の表記で「2P1E」の意味はどれか。",
+    choices: ["2極1素子", "2極2素子", "1極2素子", "1極1素子"],
+    answer: 0, explanation: "2P1E=2極（Pole）1素子（Element）。単相2線式100V回路に使用。", source: "hardcoded",
+  },
+  {
+    id: "hc-206", type: "truefalse", grade: 2, category: "regulation",
+    question: "浴室の照明器具は防湿形でなければならない。",
+
+    answer: true, explanation: "浴室等の湿気の多い場所では防湿形の照明器具を使用する義務がある。", source: "hardcoded",
+  },
+  {
+    id: "hc-207", type: "choice", grade: 2, category: "regulation",
+    question: "金属管工事、金属可とう管工事で省略できない接地工事はどれか。",
+    choices: ["A種", "B種", "C種", "D種"],
+    answer: 3, explanation: "金属管等の金属製電線管にはD種接地工事が必要。ただし一定の条件を満たせば省略可能な場合もある。", source: "hardcoded",
+  },
+
+  // ============================
+  // 第二種 - 鑑別 追加 (12問)
+  // ============================
+  {
+    id: "hc-208", type: "choice", grade: 2, category: "identification",
+    question: "露出形スイッチとは異なり、壁面に埋め込んで取り付けるスイッチの名称はどれか。",
+    choices: ["タンブラスイッチ", "埋込形スイッチ", "ロータリースイッチ", "プルスイッチ"],
+    answer: 1, explanation: "埋込形スイッチは壁面の取付枠に埋め込んで施設するスイッチ。住宅で一般的に使用される。", source: "hardcoded",
+  },
+  {
+    id: "hc-209", type: "choice", grade: 2, category: "identification",
+    question: "電線管を造営材に固定するために使用する金具はどれか。",
+    choices: ["サドル", "カップリング", "ノーマルベンド", "ブッシング"],
+    answer: 0, explanation: "サドルは電線管を壁や天井等の造営材に固定するための金具。", source: "hardcoded",
+  },
+  {
+    id: "hc-210", type: "choice", grade: 2, category: "identification",
+    question: "VVRケーブルの「R」は何を意味するか。",
+    choices: ["丸形（Round）", "補強（Reinforced）", "耐熱（Resistant）", "柔軟（Rubber）"],
+    answer: 0, explanation: "VVR=ビニル絶縁ビニルシースケーブル丸形。Rは丸形（Round）を意味する。VVFのFはFlat（平形）。", source: "hardcoded",
+  },
+  {
+    id: "hc-211", type: "truefalse", grade: 2, category: "identification",
+    question: "接地抵抗計（アーステスター）は補助接地棒2本を使用して測定する。",
+
+    answer: true, explanation: "接地抵抗計は被測定接地極と補助接地棒2本（P極、C極）の合計3点を使用して測定する。", source: "hardcoded",
+  },
+  {
+    id: "hc-212", type: "choice", grade: 2, category: "identification",
+    question: "EM-EEFケーブル（エコケーブル）の特徴として正しいものはどれか。",
+    choices: ["ビニル絶縁である", "燃焼時にハロゲンガスを出さない", "高圧用ケーブルである", "鋼帯で補強されている"],
+    answer: 1, explanation: "EM-EEF（エコマテリアルケーブル）は燃焼時に有害なハロゲンガスやダイオキシンを発生しない環境配慮型ケーブル。", source: "hardcoded",
+  },
+  {
+    id: "hc-213", type: "choice", grade: 2, category: "identification",
+    question: "写真に示すような丸い開口部をもち、電線管を相互に接続するための金属製の箱は何か。",
+    choices: ["アウトレットボックス", "プルボックス", "ジョイントボックス", "スイッチボックス"],
+    answer: 0, explanation: "アウトレットボックスは金属製の箱で、電線管の接続、電線の分岐・接続、器具の取り付けに使用する。", source: "hardcoded",
+  },
+  {
+    id: "hc-214", type: "choice", grade: 2, category: "identification",
+    question: "ねじなし電線管（E管）の色は一般的に何色か。",
+    choices: ["黒色", "灰色", "銀色（亜鉛メッキ）", "オレンジ色"],
+    answer: 2, explanation: "ねじなし電線管（E管）は亜鉛メッキ鋼管で銀色。C管（厚鋼電線管）も同様。", source: "hardcoded",
+  },
+  {
+    id: "hc-215", type: "truefalse", grade: 2, category: "identification",
+    question: "テストボタン付きの漏電遮断器は、テストボタンを押すと動作確認ができる。",
+
+    answer: true, explanation: "漏電遮断器のテストボタンは擬似的に漏電状態を作り、正常に動作するか確認するためのもの。月1回の動作確認が推奨。", source: "hardcoded",
+  },
+  {
+    id: "hc-216", type: "choice", grade: 2, category: "identification",
+    question: "電線をねじ止めで接続するための端子台の名称はどれか。",
+    choices: ["リングスリーブ", "端子台（端子ブロック）", "差込形コネクタ", "ジョイントボックス"],
+    answer: 1, explanation: "端子台はねじ止めにより電線を接続する器具。分電盤内や制御盤内で使用される。", source: "hardcoded",
+  },
+  {
+    id: "hc-217", type: "choice", grade: 2, category: "identification",
+    question: "カットアウトスイッチ（ヒューズ付き開閉器）の主な用途はどれか。",
+    choices: ["電動機の制御", "電灯回路の開閉と過電流保護", "接地抵抗の測定", "電圧の調整"],
+    answer: 1, explanation: "カットアウトスイッチはヒューズを内蔵した開閉器で、電灯回路等の開閉と過電流保護に使用する。", source: "hardcoded",
+  },
+  {
+    id: "hc-218", type: "choice", grade: 2, category: "identification",
+    question: "位置表示灯内蔵スイッチ（パイロットスイッチ）の特徴はどれか。",
+    choices: ["OFF時に点灯する", "ON時に点灯する", "常に点灯している", "自動で消灯する"],
+    answer: 1, explanation: "パイロットスイッチはON時に表示灯が点灯し、換気扇等の動作状態を確認できる。OFF時点灯はほたるスイッチ。", source: "hardcoded",
+  },
+  {
+    id: "hc-219", type: "choice", grade: 2, category: "identification",
+    question: "200V用コンセントの刃受けの形状として正しいものはどれか。",
+    choices: ["平行な2本の刃受け", "T字形の刃受け", "L字形の刃受け", "丸形の刃受け"],
+    answer: 1, explanation: "単相200V15A用コンセントはT字形（タンデム形）の刃受け。100V用は平行な刃受け。", source: "hardcoded",
+  },
+
+  // ============================
   // 第一種 - 電気理論 (15問)
   // ============================
   {
