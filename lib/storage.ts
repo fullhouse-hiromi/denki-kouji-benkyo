@@ -1,9 +1,10 @@
-import { Progress, GameData } from "./types";
+import { Progress, GameData, ExamMode } from "./types";
 import { DEFAULT_GAME_DATA } from "./game-logic";
 
 const PROGRESS_KEY = "denki-progress";
 const GAME_DATA_KEY = "denki-game-data";
 const SETTINGS_KEY = "denki-settings";
+const EXAM_MODE_KEY = "exam-mode";
 
 function getItem<T>(key: string, fallback: T): T {
   if (typeof window === "undefined") return fallback;
@@ -54,6 +55,16 @@ export function loadSettings(): Settings {
 
 export function saveSettings(settings: Settings): void {
   setItem(SETTINGS_KEY, settings);
+}
+
+// --- ExamMode ---
+
+export function loadExamMode(): ExamMode {
+  return getItem<ExamMode>(EXAM_MODE_KEY, "denki");
+}
+
+export function saveExamMode(mode: ExamMode): void {
+  setItem(EXAM_MODE_KEY, mode);
 }
 
 export function recordAnswer(

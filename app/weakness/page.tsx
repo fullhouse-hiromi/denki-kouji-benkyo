@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { Category, Question, CATEGORIES, getCategoryName } from "@/lib/types";
-import { getQuestions } from "@/lib/questions";
+import { Category, Question, ExamMode, getCategoriesForMode, getCategoryName } from "@/lib/types";
+import { getQuestionsByMode } from "@/lib/questions";
 import {
   loadProgress,
   saveProgress,
   loadGameData,
   saveGameData,
+  loadExamMode,
   recordAnswer,
 } from "@/lib/storage";
 import { calculateExpGain, getLevelFromExp, checkBadges } from "@/lib/game-logic";
@@ -36,10 +37,12 @@ type WeakCategory = {
 };
 
 function findWeakCategories(
-  byCategory: Record<string, CategoryProgress>
+  byCategory: Record<string, CategoryProgress>,
+  mode: ExamMode
 ): WeakCategory[] {
   const weak: WeakCategory[] = [];
-  for (const cat of CATEGORIES) {
+  const cats = getCategoriesForMode(mode);
+  for (const cat of cats) {
     const cp = byCategory[cat.id];
     if (cp && cp.total >= 10) {
       const rate = cp.correct / cp.total;
@@ -58,6 +61,9 @@ function findWeakCategories(
 }
 
 export default function WeaknessPage() {
+  // --- ExamMode ---
+  const [examMode, setExamMode] = useState<ExamMode>("denki");
+
   // --- State ---
   const [loading, setLoading] = useState(true);
   const [weakCategories, setWeakCategories] = useState<WeakCategory[]>([]);
@@ -98,8 +104,8 @@ export default function WeaknessPage() {
   }, []);
 
   // Load questions for a weak category
-  const loadCategoryQuestions = useCallback((cat: WeakCategory) => {
-    const loaded = getQuestions(2, cat.id);
+  const loadCategoryQuestions = useCallback((cat: WeakCategory, mode: ExamMode) => {
+    const loaded = getQuestionsByMode(mode, 2, cat.id);
     if (loaded.length === 0) return;
     setQuestions(shuffle(loaded));
     setCurrentIndex(0);
@@ -117,8 +123,10 @@ export default function WeaknessPage() {
 
   // On mount: determine weak categories
   useEffect(() => {
+    const mode = loadExamMode();
+    setExamMode(mode);
     const progress = loadProgress();
-    const weak = findWeakCategories(progress.byCategory);
+    const weak = findWeakCategories(progress.byCategory, mode);
 
     if (weak.length === 0) {
       setNoWeakCategories(true);
@@ -129,7 +137,7 @@ export default function WeaknessPage() {
     setWeakCategories(weak);
     setCurrentWeakIndex(0);
     setCurrentRate(weak[0].rate);
-    loadCategoryQuestions(weak[0]);
+    loadCategoryQuestions(weak[0], mode);
     setLoading(false);
   }, [loadCategoryQuestions]);
 
@@ -204,7 +212,7 @@ export default function WeaknessPage() {
       // Reshuffle and start again if we ran out of questions
       const currentCat = weakCategories[currentWeakIndex];
       if (currentCat) {
-        loadCategoryQuestions(currentCat);
+        loadCategoryQuestions(currentCat, examMode);
       }
       return;
     }
@@ -217,7 +225,7 @@ export default function WeaknessPage() {
   function handleNextCategory() {
     // Refresh weak categories from current progress
     const progress = loadProgress();
-    const weak = findWeakCategories(progress.byCategory).filter(
+    const weak = findWeakCategories(progress.byCategory, examMode).filter(
       (w) => w.rate < 0.8
     );
 
@@ -229,7 +237,7 @@ export default function WeaknessPage() {
     setWeakCategories(weak);
     setCurrentWeakIndex(0);
     setCurrentRate(weak[0].rate);
-    loadCategoryQuestions(weak[0]);
+    loadCategoryQuestions(weak[0], examMode);
     setStreak(0);
   }
 
