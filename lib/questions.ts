@@ -748,6 +748,461 @@ export const hardcodedQuestions: Question[] = [
   },
 
   // ============================
+  // 第二種 - 電気理論 追加2 (15問)
+  // ============================
+  {
+    id: "hc-220", type: "choice", grade: 2, category: "theory",
+    question: "三相3線式200Vの電源で、1相当たりの負荷が10Aのとき、三相電力は約何kWか。ただし力率は100%とする。",
+    choices: ["2kW", "3.46kW", "4kW", "6kW"],
+    answer: 1, explanation: "P=√3×V×I×cosθ=√3×200×10×1≒3460W≒3.46kW", source: "hardcoded",
+  },
+  {
+    id: "hc-221", type: "choice", grade: 2, category: "theory",
+    question: "三相交流の相順（相回転）がR-S-Tのとき、各相の位相差は何度か。",
+    choices: ["90°", "120°", "180°", "240°"],
+    answer: 1, explanation: "三相交流は各相が120°（2π/3ラジアン）ずつ位相がずれている。", source: "hardcoded",
+  },
+  {
+    id: "hc-222", type: "choice", grade: 2, category: "theory",
+    question: "フレミングの左手の法則で、中指が示すものはどれか。",
+    choices: ["力の方向", "磁界の方向", "電流の方向", "電圧の方向"],
+    answer: 2, explanation: "フレミング左手の法則：親指=力（F）、人差し指=磁界（B）、中指=電流（I）。電動機の原理。", source: "hardcoded",
+  },
+  {
+    id: "hc-223", type: "choice", grade: 2, category: "theory",
+    question: "フレミングの右手の法則は、何の原理を示すか。",
+    choices: ["電動機（モーター）", "発電機", "変圧器", "整流器"],
+    answer: 1, explanation: "フレミング右手の法則は発電機の原理。左手の法則は電動機の原理を示す。", source: "hardcoded",
+  },
+  {
+    id: "hc-224", type: "choice", grade: 2, category: "theory",
+    question: "ダイオードの特性として正しいものはどれか。",
+    choices: ["交流を通す", "電流を一方向のみ流す", "電圧を一定にする", "電流を増幅する"],
+    answer: 1, explanation: "ダイオードは半導体素子で、電流を一方向にのみ流す整流作用がある。", source: "hardcoded",
+  },
+  {
+    id: "hc-225", type: "truefalse", grade: 2, category: "theory",
+    question: "LEDは発光ダイオードの略称であり、順方向に電圧を加えると発光する。",
+    answer: true, explanation: "LED（Light Emitting Diode）は順方向電圧を印加すると発光する半導体素子。", source: "hardcoded",
+  },
+  {
+    id: "hc-226", type: "choice", grade: 2, category: "theory",
+    question: "ホイートストンブリッジ回路は何を測定するために使用されるか。",
+    choices: ["電圧", "電流", "抵抗", "電力"],
+    answer: 2, explanation: "ホイートストンブリッジは未知の抵抗値を精密に測定するための回路。", source: "hardcoded",
+  },
+  {
+    id: "hc-227", type: "choice", grade: 2, category: "theory",
+    question: "電磁誘導に関するファラデーの法則で、誘導起電力の大きさに関係しないものはどれか。",
+    choices: ["コイルの巻数", "磁束の変化の速さ", "コイルの抵抗", "磁束の変化量"],
+    answer: 2, explanation: "誘導起電力e=-NΔΦ/Δt。巻数Nと磁束変化の速さΔΦ/Δtに比例する。コイルの抵抗は無関係。", source: "hardcoded",
+  },
+  {
+    id: "hc-228", type: "choice", grade: 2, category: "theory",
+    question: "分流器（シャント）は何の測定範囲を拡大するために使用されるか。",
+    choices: ["電圧計", "電流計", "抵抗計", "電力計"],
+    answer: 1, explanation: "分流器は電流計に並列に接続し、測定可能な電流範囲を拡大するために使用する。", source: "hardcoded",
+  },
+  {
+    id: "hc-229", type: "choice", grade: 2, category: "theory",
+    question: "倍率器は何の測定範囲を拡大するために使用されるか。",
+    choices: ["電圧計", "電流計", "抵抗計", "電力計"],
+    answer: 0, explanation: "倍率器は電圧計に直列に接続し、測定可能な電圧範囲を拡大するために使用する。", source: "hardcoded",
+  },
+  {
+    id: "hc-230", type: "truefalse", grade: 2, category: "theory",
+    question: "単相3線式の中性線に流れる電流は、両側の負荷が平衡しているとき零になる。",
+    answer: true, explanation: "単相3線式では両側の負荷が等しい（平衡）とき、中性線の電流は打ち消し合って零になる。", source: "hardcoded",
+  },
+  {
+    id: "hc-231", type: "choice", grade: 2, category: "theory",
+    question: "6μFと3μFのコンデンサを直列に接続した場合の合成静電容量はいくつか。",
+    choices: ["1μF", "2μF", "4.5μF", "9μF"],
+    answer: 1, explanation: "直列合成C=(C₁×C₂)/(C₁+C₂)=(6×3)/(6+3)=2μF。コンデンサの直列は抵抗の並列と同じ計算。", source: "hardcoded",
+  },
+  {
+    id: "hc-232", type: "choice", grade: 2, category: "theory",
+    question: "10Ωの抵抗に5Aの電流を30秒間流したとき、発生する熱量は何Jか。",
+    choices: ["250J", "1500J", "7500J", "15000J"],
+    answer: 2, explanation: "Q=I²Rt=5²×10×30=25×10×30=7500J", source: "hardcoded",
+  },
+  {
+    id: "hc-233", type: "choice", grade: 2, category: "theory",
+    question: "電気抵抗の温度係数が正の材料はどれか。",
+    choices: ["半導体", "絶縁体", "導体（銅・アルミ）", "超電導体"],
+    answer: 2, explanation: "銅やアルミ等の導体は温度が上がると抵抗が増加する（正の温度係数）。半導体は負の温度係数。", source: "hardcoded",
+  },
+  {
+    id: "hc-234", type: "truefalse", grade: 2, category: "theory",
+    question: "コイルのみの交流回路では、電流は電圧より90°進む。",
+    answer: false, explanation: "コイル（インダクタンス）のみの回路では、電流は電圧より90°遅れる。コンデンサのみの場合は90°進む。", source: "hardcoded",
+  },
+
+  // ============================
+  // 第二種 - 配線設計・図記号 追加2 (15問)
+  // ============================
+  {
+    id: "hc-235", type: "choice", grade: 2, category: "wiring",
+    question: "単線図から複線図に書き換える際、最初に結線すべきものはどれか。",
+    choices: ["スイッチの配線", "コンセントの配線", "接地側電線（白線）", "非接地側電線（黒線）"],
+    answer: 2, explanation: "複線図では①接地側（白線）②非接地側（黒線）③スイッチの返り線の順で結線するのが基本。", source: "hardcoded",
+  },
+  {
+    id: "hc-236", type: "choice", grade: 2, category: "wiring",
+    question: "複線図で、スイッチから照明器具への渡り線は何色を使うか。",
+    choices: ["白色", "黒色", "赤色または黒色（どちらでもよい）", "緑色"],
+    answer: 2, explanation: "スイッチの返り線（渡り線）は非接地側なので黒色が原則だが、3芯ケーブルの場合は赤色も使用する。", source: "hardcoded",
+  },
+  {
+    id: "hc-237", type: "choice", grade: 2, category: "wiring",
+    question: "需要率の計算式として正しいものはどれか。",
+    choices: ["最大需要電力÷設備容量×100%", "平均需要電力÷最大需要電力×100%", "設備容量÷最大需要電力×100%", "契約電力÷設備容量×100%"],
+    answer: 0, explanation: "需要率(%)=最大需要電力/設備容量の合計×100。通常100%以下。", source: "hardcoded",
+  },
+  {
+    id: "hc-238", type: "choice", grade: 2, category: "wiring",
+    question: "負荷率の計算式として正しいものはどれか。",
+    choices: ["最大需要電力÷設備容量×100%", "平均需要電力÷最大需要電力×100%", "設備容量÷契約電力×100%", "最小電力÷最大電力×100%"],
+    answer: 1, explanation: "負荷率(%)=平均需要電力/最大需要電力×100。負荷率が高いほど設備の有効利用度が高い。", source: "hardcoded",
+  },
+  {
+    id: "hc-239", type: "choice", grade: 2, category: "wiring",
+    question: "図記号「◇」は何を表すか。",
+    choices: ["コンセント", "スイッチ", "照明器具", "配線用遮断器"],
+    answer: 3, explanation: "◇は配線用遮断器（ブレーカー）を表す図記号。", source: "hardcoded",
+  },
+  {
+    id: "hc-240", type: "choice", grade: 2, category: "wiring",
+    question: "漏電遮断器の図記号はどれか。",
+    choices: ["◇", "◇にEの添字", "◇の中に点", "BE"],
+    answer: 2, explanation: "漏電遮断器は◇の中に点（●）を付けた記号で表す。", source: "hardcoded",
+  },
+  {
+    id: "hc-241", type: "truefalse", grade: 2, category: "wiring",
+    question: "電磁開閉器の図記号にはMSと表記される。",
+    answer: true, explanation: "電磁開閉器はMS（Magnetic Switch）で表記される。MCは電磁接触器。", source: "hardcoded",
+  },
+  {
+    id: "hc-242", type: "choice", grade: 2, category: "wiring",
+    question: "幹線の太さを選定する場合、考慮すべき電動機負荷の定格電流の合計が50Aを超えるとき、幹線の許容電流は定格電流合計の何倍以上必要か。",
+    choices: ["1.0倍", "1.1倍", "1.25倍", "1.5倍"],
+    answer: 2, explanation: "電動機負荷が50A超の場合、幹線の許容電流は定格電流の合計の1.25倍以上（+他の負荷電流）が必要。", source: "hardcoded",
+  },
+  {
+    id: "hc-243", type: "choice", grade: 2, category: "wiring",
+    question: "IV電線直径2.0mmの許容電流は約何Aか。（周囲温度30℃）",
+    choices: ["19A", "27A", "35A", "48A"],
+    answer: 2, explanation: "IV線2.0mmの許容電流は35A。1.6mmは27A、2.6mmは48A。", source: "hardcoded",
+  },
+  {
+    id: "hc-244", type: "choice", grade: 2, category: "wiring",
+    question: "IV電線直径2.6mmの許容電流は約何Aか。（周囲温度30℃）",
+    choices: ["27A", "35A", "48A", "62A"],
+    answer: 2, explanation: "IV線2.6mmの許容電流は48A。覚え方：1.6mm=27A, 2.0mm=35A, 2.6mm=48A。", source: "hardcoded",
+  },
+  {
+    id: "hc-245", type: "truefalse", grade: 2, category: "wiring",
+    question: "分岐回路の配線用遮断器の定格電流は、分岐回路の電線の許容電流以下でなければならない。",
+    answer: false, explanation: "配線用遮断器の定格電流は、電線の許容電流以下でなくてよい。ただし電線の許容電流が遮断器定格の55%以上であること等の条件がある。", source: "hardcoded",
+  },
+  {
+    id: "hc-246", type: "choice", grade: 2, category: "wiring",
+    question: "VVFケーブル1.6mm 3芯の許容電流は約何Aか。",
+    choices: ["13A", "17A", "19A", "24A"],
+    answer: 1, explanation: "VVF1.6mm-3芯の許容電流は約17A。2芯の場合は19A。芯数が多いと許容電流が下がる。", source: "hardcoded",
+  },
+  {
+    id: "hc-247", type: "choice", grade: 2, category: "wiring",
+    question: "接地側電線に使用してはならない色はどれか。",
+    choices: ["白色", "灰色", "黒色", "水色"],
+    answer: 2, explanation: "黒色は非接地側電線に使用する。接地側電線は白色または灰色を使用する。", source: "hardcoded",
+  },
+  {
+    id: "hc-248", type: "choice", grade: 2, category: "wiring",
+    question: "100V15A分岐回路に接続できる固定器具（照明等）の合計容量の上限は何VAか。",
+    choices: ["1000VA", "1500VA", "2000VA", "制限なし"],
+    answer: 1, explanation: "15A分岐回路では固定器具の合計容量は1500VA以下。V×A=100×15=1500VA。", source: "hardcoded",
+  },
+  {
+    id: "hc-249", type: "choice", grade: 2, category: "wiring",
+    question: "単相3線式の中性線が断線した場合に起こる現象はどれか。",
+    choices: ["全ての負荷に電流が流れなくなる", "軽い側の負荷に過電圧がかかる", "重い側の負荷に過電圧がかかる", "何も変化しない"],
+    answer: 1, explanation: "中性線断線時、負荷の軽い側に過電圧がかかり機器が故障する危険がある。中性線には遮断器を入れてはならない理由の一つ。", source: "hardcoded",
+  },
+
+  // ============================
+  // 第二種 - 施工方法・工具 追加2 (15問)
+  // ============================
+  {
+    id: "hc-250", type: "choice", grade: 2, category: "construction",
+    question: "ランプレセプタクルに電線を接続するとき、のの字曲げ（輪作り）のねじ締めの方向はどちらか。",
+    choices: ["時計回り（右回り）", "反時計回り（左回り）", "どちらでもよい", "ねじ締めの方向と反対"],
+    answer: 0, explanation: "のの字曲げはねじの締付け方向（時計回り）に輪を作る。逆方向だと締付け時に電線が外れる。", source: "hardcoded",
+  },
+  {
+    id: "hc-251", type: "choice", grade: 2, category: "construction",
+    question: "ランプレセプタクルの受金ねじ部に接続すべき電線はどちらか。",
+    choices: ["非接地側（黒線）", "接地側（白線）", "どちらでもよい", "接地線（緑線）"],
+    answer: 1, explanation: "受金（外側のねじ部）には接地側電線（白線）を接続する。感電防止のため、触れやすい受金側を接地側にする。", source: "hardcoded",
+  },
+  {
+    id: "hc-252", type: "choice", grade: 2, category: "construction",
+    question: "露出形コンセントに電線を接続するとき、絶縁被覆のむき過ぎによる欠陥はどれか。",
+    choices: ["接続不良", "心線の露出（絶縁不良）", "電圧降下", "器具の破損"],
+    answer: 1, explanation: "被覆のむき過ぎは心線の露出（充電部露出）となり、技能試験では重大欠陥（不合格）となる。", source: "hardcoded",
+  },
+  {
+    id: "hc-253", type: "truefalse", grade: 2, category: "construction",
+    question: "金属線ぴ工事は、乾燥した場所の点検できる隠ぺい場所と露出場所に施設できる。",
+    answer: true, explanation: "金属線ぴ工事は乾燥した点検可能な隠ぺい場所と露出場所に施設できる。湿気の多い場所には不適。", source: "hardcoded",
+  },
+  {
+    id: "hc-254", type: "choice", grade: 2, category: "construction",
+    question: "ライティングダクト工事の施設場所として正しいものはどれか。",
+    choices: ["屋外", "湿気の多い場所", "乾燥した露出場所", "コンクリート埋設"],
+    answer: 2, explanation: "ライティングダクトは乾燥した露出場所に施設する。ショールーム等の照明器具の位置を自由に変えたい場所で使用。", source: "hardcoded",
+  },
+  {
+    id: "hc-255", type: "choice", grade: 2, category: "construction",
+    question: "フロアダクト工事の主な施設場所はどこか。",
+    choices: ["天井裏", "壁面", "床面（コンクリート埋設）", "屋外"],
+    answer: 2, explanation: "フロアダクトはコンクリートの床面に埋設して施設する。オフィスビルの床下配線に使用される。", source: "hardcoded",
+  },
+  {
+    id: "hc-256", type: "choice", grade: 2, category: "construction",
+    question: "がいし引き工事を施設できる場所はどれか。",
+    choices: ["コンクリートの壁面", "金属管内", "展開した場所（露出場所）", "天井裏の隠ぺい場所"],
+    answer: 2, explanation: "がいし引き工事は展開した場所（開けた露出場所）のみに施設できる。木造家屋の屋内等で使用。", source: "hardcoded",
+  },
+  {
+    id: "hc-257", type: "truefalse", grade: 2, category: "construction",
+    question: "ケーブル工事は、低圧屋内配線のすべての場所（展開した場所、隠ぺい場所、湿気の多い場所）に施設できる。",
+    answer: true, explanation: "ケーブル工事は最も汎用性が高く、展開・隠ぺい・湿気のある場所すべてに施設できる。", source: "hardcoded",
+  },
+  {
+    id: "hc-258", type: "choice", grade: 2, category: "construction",
+    question: "電線の接続部分の抵抗は、接続前と比べてどうでなければならないか。",
+    choices: ["同等以上に大きい", "2倍以上", "増加してはならない", "制限なし"],
+    answer: 2, explanation: "接続部分の電気抵抗を増加させてはならない。接続不良は発熱・火災の原因となる。", source: "hardcoded",
+  },
+  {
+    id: "hc-259", type: "choice", grade: 2, category: "construction",
+    question: "電工ナイフの主な用途はどれか。",
+    choices: ["電線管の切断", "ケーブルの外装被覆の剥ぎ取り", "電線の圧着", "ねじの締め付け"],
+    answer: 1, explanation: "電工ナイフはケーブルの外装被覆やIV線の絶縁被覆を剥ぎ取る工具。VVFストリッパーが普及した現在も使用される。", source: "hardcoded",
+  },
+  {
+    id: "hc-260", type: "choice", grade: 2, category: "construction",
+    question: "リングスリーブ「中」を使用する電線の組み合わせとして正しいものはどれか。",
+    choices: ["1.6mm×2本", "1.6mm×5本〜6本", "2.0mm×1本と1.6mm×1本", "2.0mm×4本"],
+    answer: 1, explanation: "中スリーブは断面積の合計が小スリーブの範囲を超え8mm²以下の場合に使用。1.6mm×5〜6本等。", source: "hardcoded",
+  },
+  {
+    id: "hc-261", type: "choice", grade: 2, category: "construction",
+    question: "合成樹脂管（VE管）を曲げる場合の方法はどれか。",
+    choices: ["パイプベンダーで曲げる", "トーチランプ等で加熱して曲げる", "そのまま手で曲げる", "曲げてはならない"],
+    answer: 1, explanation: "VE管（硬質塩化ビニル電線管）はトーチランプ等で加熱して軟化させてから曲げる。", source: "hardcoded",
+  },
+  {
+    id: "hc-262", type: "truefalse", grade: 2, category: "construction",
+    question: "低圧屋内配線で、ビニルテープのみによる電線の接続は認められていない。",
+    answer: true, explanation: "電線の接続はリングスリーブや差込形コネクタ等の接続器具を使用する。ビニルテープのみの接続は不可。絶縁テープは接続後の絶縁処理に使用。", source: "hardcoded",
+  },
+  {
+    id: "hc-263", type: "choice", grade: 2, category: "construction",
+    question: "C種接地工事の接地抵抗値は何Ω以下か。",
+    choices: ["10Ω", "50Ω", "100Ω", "500Ω"],
+    answer: 0, explanation: "C種接地工事は10Ω以下。300V超の低圧機器の金属製外箱に施す。漏電遮断器設置時は500Ω以下に緩和。", source: "hardcoded",
+  },
+  {
+    id: "hc-264", type: "choice", grade: 2, category: "construction",
+    question: "B種接地工事が必要な箇所はどれか。",
+    choices: ["高圧機器の外箱", "変圧器の低圧側中性点", "300V以下の機器外箱", "避雷器"],
+    answer: 1, explanation: "B種接地工事は変圧器の低圧側中性点（または1端子）に施す。高低圧混触時の低圧側電圧上昇を抑制する。", source: "hardcoded",
+  },
+
+  // ============================
+  // 第二種 - 法規 追加2 (15問)
+  // ============================
+  {
+    id: "hc-265", type: "choice", grade: 2, category: "regulation",
+    question: "漏電遮断器の定格感度電流が30mAのものは、何を目的として設置されるか。",
+    choices: ["過電流保護", "短絡保護", "感電保護", "過電圧保護"],
+    answer: 2, explanation: "定格感度電流30mAの漏電遮断器は人体への感電保護を主目的とする。人体に危険な電流は約50mA。", source: "hardcoded",
+  },
+  {
+    id: "hc-266", type: "choice", grade: 2, category: "regulation",
+    question: "漏電遮断器の動作時間が0.1秒以内のものの種類はどれか。",
+    choices: ["時延形", "反限時形", "高速形", "定限時形"],
+    answer: 2, explanation: "高速形は動作時間0.1秒以内。人体の感電保護には高速形が適している。", source: "hardcoded",
+  },
+  {
+    id: "hc-267", type: "truefalse", grade: 2, category: "regulation",
+    question: "電気工事業を営もうとする者は、都道府県知事の登録を受けなければならない。",
+    answer: true, explanation: "電気工事業法により、電気工事業を営む者は都道府県知事（2以上の都道府県の場合は経済産業大臣）に登録が必要。", source: "hardcoded",
+  },
+  {
+    id: "hc-268", type: "choice", grade: 2, category: "regulation",
+    question: "一般用電気工作物の竣工検査は誰が行うか。",
+    choices: ["電気工事士", "電力会社", "都道府県知事", "設置者（届出不要）"],
+    answer: 3, explanation: "一般用電気工作物は自家用と異なり、設置者が自主的に検査を行えばよく、届出は不要。電力会社の調査はある。", source: "hardcoded",
+  },
+  {
+    id: "hc-269", type: "choice", grade: 2, category: "regulation",
+    question: "一般用電気工作物の調査（定期調査）を行うのはどこか。",
+    choices: ["経済産業省", "電力会社等の登録調査機関", "電気工事士", "都道府県知事"],
+    answer: 1, explanation: "一般用電気工作物は電力会社等の登録調査機関が定期的に調査する。4年に1回以上。", source: "hardcoded",
+  },
+  {
+    id: "hc-270", type: "choice", grade: 2, category: "regulation",
+    question: "特定電気用品以外の電気用品に表示されるPSEマークの形状はどれか。",
+    choices: ["菱形", "丸形", "三角形", "四角形"],
+    answer: 1, explanation: "特定電気用品以外は丸形のPSEマーク。特定電気用品は菱形。電気スタンド等は丸形PSE。", source: "hardcoded",
+  },
+  {
+    id: "hc-271", type: "truefalse", grade: 2, category: "regulation",
+    question: "配線用遮断器、漏電遮断器は特定電気用品に該当する。",
+    answer: true, explanation: "配線用遮断器、漏電遮断器は特定電気用品に該当し、菱形PSEマークと登録検査機関名の表示が必要。", source: "hardcoded",
+  },
+  {
+    id: "hc-272", type: "choice", grade: 2, category: "regulation",
+    question: "電気工事士が工事中に電線を損傷した場合の義務はどれか。",
+    choices: ["報告書を提出する", "速やかに修復する", "検査機関に通報する", "特に義務はない"],
+    answer: 1, explanation: "電気工事士は工事中に損傷を発見した場合、速やかに修復しなければならない（技術基準適合義務）。", source: "hardcoded",
+  },
+  {
+    id: "hc-273", type: "choice", grade: 2, category: "regulation",
+    question: "住宅の屋内に施設する電路で、対地電圧が150Vを超えることが認められるのはどの場合か。",
+    choices: ["すべての場合で不可", "200V回路で専用の遮断器と接地極付きコンセントを使用する場合", "エアコン専用回路の場合のみ", "分電盤内のみ"],
+    answer: 1, explanation: "定格消費電力2kW以上の機器で、専用回路・接地極付きコンセント・漏電遮断器の設置等の条件を満たせば対地電圧150V超が可能。", source: "hardcoded",
+  },
+  {
+    id: "hc-274", type: "choice", grade: 2, category: "regulation",
+    question: "単相3線式回路の中性線に設けてはならないものはどれか。",
+    choices: ["接地工事", "ヒューズや遮断器", "電流計", "電線管"],
+    answer: 1, explanation: "中性線にはヒューズや遮断器を設けてはならない。中性線が断線すると負荷に過電圧がかかる危険がある。", source: "hardcoded",
+  },
+  {
+    id: "hc-275", type: "truefalse", grade: 2, category: "regulation",
+    question: "電気工事士免状を他人に貸与することは禁止されている。",
+    answer: true, explanation: "電気工事士法により、免状の貸与、不正使用は禁止されている。違反した場合は免状の返納を命じられることがある。", source: "hardcoded",
+  },
+  {
+    id: "hc-276", type: "choice", grade: 2, category: "regulation",
+    question: "使用電圧200Vの屋内配線の絶縁抵抗測定に使用する絶縁抵抗計の定格測定電圧はどれか。",
+    choices: ["125V", "250V", "500V", "1000V"],
+    answer: 2, explanation: "対地電圧150V超300V以下の場合、250Vの絶縁抵抗計を使用する。150V以下は125V。", source: "hardcoded",
+  },
+  {
+    id: "hc-277", type: "choice", grade: 2, category: "regulation",
+    question: "電気設備技術基準で「低圧」に分類される直流の電圧範囲はどれか。",
+    choices: ["600V以下", "750V以下", "1000V以下", "1500V以下"],
+    answer: 1, explanation: "低圧は交流600V以下、直流750V以下。交流と直流で上限値が異なる点に注意。", source: "hardcoded",
+  },
+  {
+    id: "hc-278", type: "choice", grade: 2, category: "regulation",
+    question: "水気のある場所に設置するコンセントに必要な措置はどれか。",
+    choices: ["防雨形にする", "漏電遮断器を設置する", "使用しない", "カバーを付ける"],
+    answer: 1, explanation: "水気のある場所のコンセントには漏電遮断器（定格感度電流15mA以下、動作時間0.1秒以下が望ましい）の設置が必要。", source: "hardcoded",
+  },
+  {
+    id: "hc-279", type: "truefalse", grade: 2, category: "regulation",
+    question: "エアコンの室内機と室外機を結ぶ配線工事は、電気工事士でなければできない。",
+    answer: true, explanation: "エアコン接続は電気工事に該当し、電気工事士の資格が必要。ただし、コンセントに差し込むだけの場合は不要。", source: "hardcoded",
+  },
+
+  // ============================
+  // 第二種 - 鑑別 追加2 (15問)
+  // ============================
+  {
+    id: "hc-280", type: "choice", grade: 2, category: "identification",
+    question: "圧着ペンチの柄が黄色のものは、何用か。",
+    choices: ["裸圧着端子・裸スリーブ専用", "リングスリーブ専用", "絶縁被覆付き端子専用", "汎用"],
+    answer: 1, explanation: "黄色の柄はリングスリーブ専用の圧着ペンチ。赤色は裸圧着端子用。JIS適合品を使用すること。", source: "hardcoded",
+  },
+  {
+    id: "hc-281", type: "choice", grade: 2, category: "identification",
+    question: "プルスイッチの操作方法はどれか。",
+    choices: ["レバーを上下する", "紐（ひも）を引いて操作する", "ボタンを押す", "つまみを回す"],
+    answer: 1, explanation: "プルスイッチは紐（ひも）を引いて照明等のON/OFFを操作するスイッチ。天井付近に設置される。", source: "hardcoded",
+  },
+  {
+    id: "hc-282", type: "choice", grade: 2, category: "identification",
+    question: "タイムスイッチの機能はどれか。",
+    choices: ["手動でON/OFFする", "設定した時刻に自動的にON/OFFする", "温度により自動制御する", "光により自動制御する"],
+    answer: 1, explanation: "タイムスイッチは設定時刻に自動的に回路をON/OFFする。外灯の自動点滅等に使用。", source: "hardcoded",
+  },
+  {
+    id: "hc-283", type: "choice", grade: 2, category: "identification",
+    question: "自動点滅器の動作原理として正しいものはどれか。",
+    choices: ["タイマーで制御する", "周囲の明るさ（照度）で制御する", "人感センサーで制御する", "温度で制御する"],
+    answer: 1, explanation: "自動点滅器はCdS（硫化カドミウムセル）等で周囲の明るさを検知し、暗くなると自動点灯、明るくなると消灯する。", source: "hardcoded",
+  },
+  {
+    id: "hc-284", type: "truefalse", grade: 2, category: "identification",
+    question: "OW線（屋外用ビニル絶縁電線）は、屋外の架空配線に使用される。",
+    answer: true, explanation: "OW線（Outdoor Weatherproof）は屋外専用の絶縁電線。屋内配線には使用できない。", source: "hardcoded",
+  },
+  {
+    id: "hc-285", type: "choice", grade: 2, category: "identification",
+    question: "DV線（引込用ビニル絶縁電線）の主な用途はどれか。",
+    choices: ["屋内配線", "地中埋設", "電柱から建物への引込線", "制御回路の配線"],
+    answer: 2, explanation: "DV線は電柱から需要家への低圧引込線に使用される電線。", source: "hardcoded",
+  },
+  {
+    id: "hc-286", type: "choice", grade: 2, category: "identification",
+    question: "テスター（回路計）で直流電圧を測定する場合の接続方法はどれか。",
+    choices: ["直列に接続する", "並列に接続する", "電線に巻き付ける", "接地に接続する"],
+    answer: 1, explanation: "電圧計（テスター含む）は測定対象と並列に接続する。電流計は直列に接続する。", source: "hardcoded",
+  },
+  {
+    id: "hc-287", type: "choice", grade: 2, category: "identification",
+    question: "絶縁抵抗計（メガー）の使用上の注意として正しいものはどれか。",
+    choices: ["電源を入れたまま測定する", "必ず回路を無電圧にしてから測定する", "接地を外してから測定する", "負荷を接続したまま測定する"],
+    answer: 1, explanation: "絶縁抵抗計は回路を無電圧（停電状態）にしてから測定する。通電中の測定は機器の損傷や感電の危険がある。", source: "hardcoded",
+  },
+  {
+    id: "hc-288", type: "truefalse", grade: 2, category: "identification",
+    question: "IV電線は600Vビニル絶縁電線のことで、一般に単線で使用される。",
+    answer: true, explanation: "IV（Indoor PVC）線は600Vビニル絶縁電線。電線管内の配線に使用され、直径1.6mm、2.0mm、2.6mm等の単線がある。", source: "hardcoded",
+  },
+  {
+    id: "hc-289", type: "choice", grade: 2, category: "identification",
+    question: "プルボックスの用途として正しいものはどれか。",
+    choices: ["電線管のカーブ部での電線引き入れを容易にする", "電線を切断する", "接地棒を収納する", "電圧を測定する"],
+    answer: 0, explanation: "プルボックスは長い配管ルートや曲がりの多い場所で、電線の引き入れを容易にするための大型ボックス。", source: "hardcoded",
+  },
+  {
+    id: "hc-290", type: "choice", grade: 2, category: "identification",
+    question: "ケーブルストリッパーとVVFストリッパーの違いとして正しいものはどれか。",
+    choices: ["同じものである", "VVFストリッパーはVVF専用で外装と被覆を同時に剥ける", "ケーブルストリッパーの方が安い", "VVFストリッパーは金属管用"],
+    answer: 1, explanation: "VVFストリッパーはVVFケーブル専用で、外装剥ぎと絶縁被覆剥ぎの両方ができる。のの字曲げ機能付きのものもある。", source: "hardcoded",
+  },
+  {
+    id: "hc-291", type: "choice", grade: 2, category: "identification",
+    question: "ブッシングの用途はどれか。",
+    choices: ["電線管相互の接続", "電線管の端部に取り付け、電線の被覆を保護する", "電線管を壁に固定する", "電線管の穴をふさぐ"],
+    answer: 1, explanation: "ブッシングは金属管の端部に取り付け、管端の角で電線の被覆が傷つくのを防ぐ保護用部品。", source: "hardcoded",
+  },
+  {
+    id: "hc-292", type: "choice", grade: 2, category: "identification",
+    question: "ノーマルベンドの用途はどれか。",
+    choices: ["電線管を直角に曲げて接続する", "電線管を直線的に接続する", "電線管とボックスを接続する", "電線管を壁に固定する"],
+    answer: 0, explanation: "ノーマルベンドは90°に曲がった金属製の管で、電線管を直角方向に配管するときに使用する。", source: "hardcoded",
+  },
+  {
+    id: "hc-293", type: "choice", grade: 2, category: "identification",
+    question: "カップリングの用途はどれか。",
+    choices: ["電線管相互を直線で接続する", "電線管を曲げる", "電線管とボックスを接続する", "電線管を固定する"],
+    answer: 0, explanation: "カップリングは電線管相互を直線方向に接続する金具。ねじなし管用とねじ切り管用がある。", source: "hardcoded",
+  },
+  {
+    id: "hc-294", type: "truefalse", grade: 2, category: "identification",
+    question: "接地極付接地端子付コンセント（EETコンセント）は、接地極と接地端子の両方を持つコンセントである。",
+    answer: true, explanation: "EETコンセントは接地極（E）と接地端子（ET）の両方を備えたコンセント。洗濯機やエアコン等に使用。", source: "hardcoded",
+  },
+
+  // ============================
   // 第一種 - 電気理論 (15問)
   // ============================
   {
