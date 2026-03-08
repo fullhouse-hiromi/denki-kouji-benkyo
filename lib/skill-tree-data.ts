@@ -1,16 +1,16 @@
-import { Category, SkillNodeStatus } from "./types";
+import { DenkiCategory, SkillNodeStatus } from "./types";
 
 export type SkillTreeNodeDef = {
   id: string;
   name: string;
-  category: Category;
+  category: DenkiCategory;
   description: string;
   parentId?: string;
 };
 
 type CategoryNodes = SkillTreeNodeDef[];
 
-export const SKILL_TREE_NODES: Record<Category, CategoryNodes> = {
+export const SKILL_TREE_NODES: Record<DenkiCategory, CategoryNodes> = {
   theory: [
     {
       id: "ohms-law",
@@ -202,7 +202,7 @@ export const SKILL_TREE_NODES: Record<Category, CategoryNodes> = {
  */
 export function getNodeStatus(
   nodeId: string,
-  category: Category,
+  category: DenkiCategory,
   skillTreeState: Record<string, Record<string, { correctRate: number; totalAnswered: number }>>
 ): SkillNodeStatus {
   const nodes = SKILL_TREE_NODES[category];

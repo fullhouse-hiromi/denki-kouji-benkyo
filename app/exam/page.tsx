@@ -1,21 +1,23 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import {
   Grade,
   Question,
-  CATEGORIES,
+  ExamMode,
+  getCategoriesForMode,
   getCategoryName,
   ExamRecord,
   Category,
   CategoryProgress,
 } from "@/lib/types";
-import { getRandomQuestions } from "@/lib/questions";
+import { getRandomQuestionsByMode } from "@/lib/questions";
 import {
   loadProgress,
   saveProgress,
   loadGameData,
   saveGameData,
+  loadExamMode,
 } from "@/lib/storage";
 import { calculateExpGain, getLevelFromExp, checkBadges } from "@/lib/game-logic";
 import QuestionCard from "@/components/QuestionCard";
@@ -31,6 +33,7 @@ type Phase = "start" | "exam" | "results";
 export default function ExamPage() {
   const [phase, setPhase] = useState<Phase>("start");
   const [grade, setGrade] = useState<Grade>(2);
+  const [examMode, setExamMode] = useState<ExamMode>("denki");
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<AnswerEntry[]>([]);
@@ -42,6 +45,13 @@ export default function ExamPage() {
   const [categoryScores, setCategoryScores] = useState<
     Record<string, CategoryProgress>
   >({});
+
+  useEffect(() => {
+    setExamMode(loadExamMode());
+  }, []);
+
+  const isSharoshi = examMode === "sharoshi";
+  const categories = getCategoriesForMode(examMode);
 
   // ---------------------------------------------------------------------------
   // Helpers
@@ -57,14 +67,16 @@ export default function ExamPage() {
   }
 
   const answeredCount = answers.length;
-  const totalSeconds = grade === 2 ? 120 * 60 : 140 * 60;
+  // 社労士: 210分(択一式70問相当) / 電気工事士: 120分(2種)/140分(1種)
+  const questionCount = isSharoshi ? 50 : 50;
+  const totalSeconds = isSharoshi ? 210 * 60 : grade === 2 ? 120 * 60 : 140 * 60;
 
   // ---------------------------------------------------------------------------
   // Start exam
   // ---------------------------------------------------------------------------
 
   function handleStart() {
-    const examQuestions = getRandomQuestions(grade, 50);
+    const examQuestions = getRandomQuestionsByMode(examMode, grade, questionCount);
     setQuestions(examQuestions);
     setAnswers([]);
     setCurrentIndex(0);
@@ -106,7 +118,7 @@ export default function ExamPage() {
     const catScores: Record<string, CategoryProgress> = {};
 
     // Initialize all categories
-    for (const cat of CATEGORIES) {
+    for (const cat of categories) {
       catScores[cat.id] = { total: 0, correct: 0 };
     }
 
@@ -169,7 +181,7 @@ export default function ExamPage() {
     saveGameData(updatedGameData);
 
     setPhase("results");
-  }, [questions, answers, grade]);
+  }, [questions, answers, grade, categories]);
 
   const handleTimeUp = useCallback(() => {
     finishExam();
@@ -185,43 +197,47 @@ export default function ExamPage() {
         <div className="max-w-2xl mx-auto px-4 py-8">
           <h1 className="text-2xl font-bold mb-2 text-center">模擬試験モード</h1>
           <p className="text-gray-400 text-center mb-8">
-            本番と同じ形式で実力を確認しましょう
+            {isSharoshi
+              ? "社労士試験形式で実力を確認しましょう"
+              : "本番と同じ形式で実力を確認しましょう"}
           </p>
 
-          {/* Grade selection */}
-          <div className="mb-8">
-            <h2 className="text-lg font-semibold mb-4 text-gray-300">
-              試験種別を選択
-            </h2>
-            <div className="flex gap-4">
-              {([2, 1] as Grade[]).map((g) => (
-                <button
-                  key={g}
-                  onClick={() => setGrade(g)}
-                  className={`flex-1 p-6 rounded-xl border-2 text-center transition-all ${
-                    grade === g
-                      ? "border-blue-500 bg-blue-900/30 text-blue-300"
-                      : "border-gray-600 hover:border-blue-400 hover:bg-blue-900/10 text-gray-300"
-                  }`}
-                >
-                  <div className="text-xl font-bold mb-1">
-                    第{g === 1 ? "一" : "二"}種
-                  </div>
-                  <div className="text-sm text-gray-400">
-                    {g === 2 ? "120分 / 50問" : "140分 / 50問"}
-                  </div>
-                </button>
-              ))}
+          {/* Grade selection - only for denki */}
+          {!isSharoshi && (
+            <div className="mb-8">
+              <h2 className="text-lg font-semibold mb-4 text-gray-300">
+                試験種別を選択
+              </h2>
+              <div className="flex gap-4">
+                {([2, 1] as Grade[]).map((g) => (
+                  <button
+                    key={g}
+                    onClick={() => setGrade(g)}
+                    className={`flex-1 p-6 rounded-xl border-2 text-center transition-all ${
+                      grade === g
+                        ? "border-blue-500 bg-blue-900/30 text-blue-300"
+                        : "border-gray-600 hover:border-blue-400 hover:bg-blue-900/10 text-gray-300"
+                    }`}
+                  >
+                    <div className="text-xl font-bold mb-1">
+                      第{g === 1 ? "一" : "二"}種
+                    </div>
+                    <div className="text-sm text-gray-400">
+                      {g === 2 ? "120分 / 50問" : "140分 / 50問"}
+                    </div>
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Exam info */}
           <div className="bg-gray-800 rounded-xl p-6 mb-8">
             <h3 className="font-semibold mb-3 text-gray-300">試験概要</h3>
             <ul className="space-y-2 text-gray-400 text-sm">
-              <li>- 問題数: 50問</li>
-              <li>- 制限時間: {grade === 2 ? "120" : "140"}分</li>
-              <li>- 合格ライン: 60%（30問以上正解）</li>
+              <li>- 問題数: {questionCount}問</li>
+              <li>- 制限時間: {isSharoshi ? "210" : grade === 2 ? "120" : "140"}分</li>
+              <li>- 合格ライン: {isSharoshi ? "各科目で基準点以上" : "60%（30問以上正解）"}</li>
               <li>- 問題間の移動は自由にできます</li>
               <li>- 試験中に解説は表示されません</li>
             </ul>
@@ -262,7 +278,9 @@ export default function ExamPage() {
           {/* Header with timer */}
           <div className="flex items-center justify-between mb-4 bg-gray-800 rounded-xl px-4 py-3">
             <div className="text-sm text-gray-400">
-              模擬試験 - 第{grade === 1 ? "一" : "二"}種
+              {isSharoshi
+                ? "模擬試験 - 社労士"
+                : `模擬試験 - 第${grade === 1 ? "一" : "二"}種`}
             </div>
             <ExamTimer
               totalSeconds={totalSeconds}
@@ -376,7 +394,8 @@ export default function ExamPage() {
   // RENDER - Results screen
   // ===========================================================================
 
-  const passed = score >= 30;
+  const passThreshold = isSharoshi ? 0.6 : 0.6;
+  const passed = score / questions.length >= passThreshold;
   const scorePercent = questions.length > 0 ? Math.round((score / questions.length) * 100) : 0;
 
   return (
@@ -418,9 +437,11 @@ export default function ExamPage() {
 
         {/* Category scores */}
         <div className="bg-gray-800 rounded-xl p-6 mb-6">
-          <h2 className="text-lg font-semibold mb-4">分野別正答率</h2>
+          <h2 className="text-lg font-semibold mb-4">
+            {isSharoshi ? "科目別正答率" : "分野別正答率"}
+          </h2>
           <div className="space-y-4">
-            {CATEGORIES.map((cat) => {
+            {categories.map((cat) => {
               const cs = categoryScores[cat.id];
               if (!cs || cs.total === 0) return null;
               const rate = Math.round((cs.correct / cs.total) * 100);
@@ -481,7 +502,7 @@ export default function ExamPage() {
                     </span>
                     <div className="flex-1">
                       <div className="text-sm text-gray-400 mb-1">
-                        問{i + 1} [{getCategoryName(q.category as Category)}]
+                        問{i + 1} [{getCategoryName(q.category as Category, examMode)}]
                       </div>
                       <div className="text-sm leading-relaxed mb-2">
                         {q.question}

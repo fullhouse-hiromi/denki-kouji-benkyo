@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { Question, CATEGORIES } from "@/lib/types";
-import { getQuestions } from "@/lib/questions";
+import { Question, ExamMode, getCategoriesForMode } from "@/lib/types";
+import { getQuestionsByMode } from "@/lib/questions";
 import {
   loadProgress,
   saveProgress,
   loadGameData,
   saveGameData,
+  loadExamMode,
   recordAnswer,
 } from "@/lib/storage";
 import { calculateExpGain, getLevelFromExp, checkBadges } from "@/lib/game-logic";
@@ -85,10 +86,12 @@ export default function SurvivalPage() {
 
   // --- Start game ---
   function handleStart() {
-    // Load all questions from all categories (grade 2)
+    // Load all questions from all categories
+    const mode = loadExamMode();
+    const cats = getCategoriesForMode(mode);
     const allQuestions: Question[] = [];
-    for (const cat of CATEGORIES) {
-      const loaded = getQuestions(2, cat.id);
+    for (const cat of cats) {
+      const loaded = getQuestionsByMode(mode, 2, cat.id);
       allQuestions.push(...loaded);
     }
 

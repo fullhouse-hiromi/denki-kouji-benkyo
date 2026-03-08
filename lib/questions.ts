@@ -1590,3 +1590,28 @@ export function getRandomQuestions(grade: Grade, count: number): Question[] {
 export function getAllQuestions(): Question[] {
   return hardcodedQuestions;
 }
+
+// --- ExamMode 対応ヘルパー ---
+import type { ExamMode } from "./types";
+import { sharoshiQuestions, getSharoshiQuestions, getRandomSharoshiQuestions } from "./sharoshi-questions";
+
+export function getQuestionsByMode(mode: ExamMode, grade: Grade, category: Category): Question[] {
+  if (mode === "sharoshi") {
+    return getSharoshiQuestions(category as import("./types").SharoshiCategory);
+  }
+  return getQuestions(grade, category);
+}
+
+export function getRandomQuestionsByMode(mode: ExamMode, grade: Grade, count: number): Question[] {
+  if (mode === "sharoshi") {
+    return getRandomSharoshiQuestions(count);
+  }
+  return getRandomQuestions(grade, count);
+}
+
+export function getAllQuestionsByMode(mode: ExamMode): Question[] {
+  if (mode === "sharoshi") {
+    return sharoshiQuestions;
+  }
+  return hardcodedQuestions;
+}

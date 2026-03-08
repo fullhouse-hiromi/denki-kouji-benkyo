@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { Grade, Category, Question, CATEGORIES } from "@/lib/types";
-import { getQuestions } from "@/lib/questions";
+import { Grade, Category, Question, ExamMode, getCategoriesForMode } from "@/lib/types";
+import { getQuestionsByMode } from "@/lib/questions";
 import {
   loadProgress,
   saveProgress,
   loadGameData,
   saveGameData,
+  loadExamMode,
   recordAnswer,
 } from "@/lib/storage";
 import { calculateExpGain, getLevelFromExp, checkBadges } from "@/lib/game-logic";
@@ -32,6 +33,8 @@ type Phase = "select" | "quiz" | "result";
 export default function PracticePage() {
   // --- Selection state ---
   const [grade, setGrade] = useState<Grade>(2);
+  const [examMode, setExamMode] = useState<ExamMode>("denki");
+  const [categories, setCategories] = useState(getCategoriesForMode("denki"));
   const [category, setCategory] = useState<Category>("theory");
 
   // --- Quiz state ---
@@ -52,6 +55,15 @@ export default function PracticePage() {
   const [pendingBadges, setPendingBadges] = useState<Badge[]>([]);
   const [currentBadge, setCurrentBadge] = useState<Badge | null>(null);
 
+  // Load exam mode on mount
+  useEffect(() => {
+    const mode = loadExamMode();
+    setExamMode(mode);
+    const cats = getCategoriesForMode(mode);
+    setCategories(cats);
+    setCategory(cats[0].id);
+  }, []);
+
   // Show pending badges one at a time
   useEffect(() => {
     if (!currentBadge && pendingBadges.length > 0) {
@@ -71,7 +83,7 @@ export default function PracticePage() {
 
   // --- Start quiz ---
   function handleStart() {
-    const loaded = getQuestions(grade, category);
+    const loaded = getQuestionsByMode(examMode, grade, category);
     if (loaded.length === 0) return;
     const shuffled = shuffle(loaded);
     setQuestions(shuffled);
@@ -161,6 +173,9 @@ export default function PracticePage() {
     setStreak(0);
   }
 
+  const isSharoshi = examMode === "sharoshi";
+  const modeLabel = isSharoshi ? "社労士" : "電気工事士";
+
   // =========================================================================
   // RENDER
   // =========================================================================
@@ -170,37 +185,40 @@ export default function PracticePage() {
     return (
       <div className="min-h-screen bg-gray-900 text-white">
         <div className="max-w-2xl mx-auto px-4 py-8">
-          <h1 className="text-2xl font-bold mb-8 text-center">練習モード</h1>
+          <h1 className="text-2xl font-bold mb-2 text-center">練習モード</h1>
+          <p className="text-center text-sm text-gray-400 mb-8">{modeLabel}</p>
 
-          {/* Grade selection */}
-          <div className="mb-8">
-            <h2 className="text-lg font-semibold mb-4 text-gray-300">
-              試験種別を選択
-            </h2>
-            <div className="flex gap-4">
-              {([2, 1] as Grade[]).map((g) => (
-                <button
-                  key={g}
-                  onClick={() => setGrade(g)}
-                  className={`flex-1 p-4 rounded-xl border-2 text-center font-bold transition-all ${
-                    grade === g
-                      ? "border-blue-500 bg-blue-900/30 text-blue-300"
-                      : "border-gray-600 hover:border-blue-400 hover:bg-blue-900/10 text-gray-300"
-                  }`}
-                >
-                  第{g === 1 ? "一" : "二"}種
-                </button>
-              ))}
+          {/* Grade selection - only for denki */}
+          {!isSharoshi && (
+            <div className="mb-8">
+              <h2 className="text-lg font-semibold mb-4 text-gray-300">
+                試験種別を選択
+              </h2>
+              <div className="flex gap-4">
+                {([2, 1] as Grade[]).map((g) => (
+                  <button
+                    key={g}
+                    onClick={() => setGrade(g)}
+                    className={`flex-1 p-4 rounded-xl border-2 text-center font-bold transition-all ${
+                      grade === g
+                        ? "border-blue-500 bg-blue-900/30 text-blue-300"
+                        : "border-gray-600 hover:border-blue-400 hover:bg-blue-900/10 text-gray-300"
+                    }`}
+                  >
+                    第{g === 1 ? "一" : "二"}種
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Category selection */}
           <div className="mb-8">
             <h2 className="text-lg font-semibold mb-4 text-gray-300">
-              カテゴリを選択
+              {isSharoshi ? "科目を選択" : "カテゴリを選択"}
             </h2>
             <div className="space-y-3">
-              {CATEGORIES.map((cat) => (
+              {categories.map((cat) => (
                 <button
                   key={cat.id}
                   onClick={() => setCategory(cat.id)}
